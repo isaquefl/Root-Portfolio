@@ -39,10 +39,15 @@ const ContactSection = () => {
     }));
   };
 
-  // Discord webhook integration
+  // Discord webhook integration (configure via .env — never hardcode the URL)
   const sendToDiscord = async (data) => {
-    const webhookUrl = 'https://discord.com/api/webhooks/SEU_ID/SEU_WEBHOOK_TOKEN';
-    
+    const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL;
+
+    if (!webhookUrl) {
+      console.warn('VITE_DISCORD_WEBHOOK_URL não configurada. Veja .env.example.');
+      return false;
+    }
+
     const embed = {
       title: '📩 Nova Mensagem do Portfolio',
       description: 'Alguém entrou em contato através do site!',

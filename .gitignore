@@ -1,8 +1,21 @@
-.DS_Store
+# Dependencies
 node_modules
-.idea
-package-lock.json
+
+# Environment — nunca versionar segredos / never commit secrets
+.env
+.env.local
+.env.*.local
+
+# Build output
 /build
-.vscode/
+/dist
+
+# Editor / OS
+.DS_Store
 .idea/
+.vscode/
+
+# Misc
+package-lock.json
 vite.config.*s.*
+*.log
